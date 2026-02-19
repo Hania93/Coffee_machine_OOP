@@ -7,9 +7,10 @@ class CoffeeMaker:
         "water": 1000,
         "milk": 500
     }
-
+    
     def __init__(self):
         self.resources = self.INIT_RESOURCES.copy()
+        self.drinks_counter = 0
 
     def refill_resources(self, missing_resources):
         for missing in missing_resources:
@@ -30,6 +31,7 @@ class CoffeeMaker:
     def make_drink(self, drink):
         for resource in self.resources:
             self.resources[resource] -= drink.ingredients[resource]
+        self.drinks_counter += 1
     
     def ask_yes_no(self, question, valid=('yes', 'no'), quit_key='q'):
         answers = {
